@@ -9,4 +9,3 @@ export PGPASSWORD=stocksdb
 psql -h localhost -d stocksdb -U stocksdb -f /Stocks/sql/load_stocks_into_db.sql
 
 python3 /Stocks/stocks_scraper.py 
-echo "I have finished running"

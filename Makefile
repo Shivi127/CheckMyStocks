@@ -7,4 +7,4 @@ build :
 	docker build -f $(CURR_PATH)/Dockerfile -t $(IMAGENAME) .
 
 run : build
-	docker run $(IMAGENAME) /Stocks/startserver.sh
+	docker run --rm $(IMAGENAME) /Stocks/startserver.sh
