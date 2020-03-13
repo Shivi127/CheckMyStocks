@@ -5,7 +5,5 @@
 sudo -H -u postgres bash -c "psql --command \"CREATE USER stocksdb WITH SUPERUSER PASSWORD 'stocksdb'\" ";
 sudo -H -u postgres bash -c "createdb -O stocksdb 'stocksdb'";
 
-echo "I ran"
-
-# export PGPASSWORD=stocksdb
-# psql -h localhost -d stocksdb -U stocksdb -f /Stocks/{}.sql
+export PGPASSWORD=stocksdb
+psql -h localhost -d stocksdb -U stocksdb -f /Stocks/sql/load_stocks_into_db.sql
