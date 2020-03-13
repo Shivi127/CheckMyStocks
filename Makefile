@@ -6,5 +6,5 @@ CURR_PATH=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 build :
 	docker build -f $(CURR_PATH)/Dockerfile -t $(IMAGENAME) .
 
-run :
+run : build
 	docker run $(IMAGENAME) /Stocks/startserver.sh
