@@ -30,6 +30,7 @@ class Stocks:
         pass
 
     def add_new_stock(self, name, price, quantity):
+        print(f"Adding {quantity} of {name} to the db at price {price}")
         query = " INSERT INTO stocks_db VALUES (%s,%s,%s) ON CONFLICT DO NOTHING; "
         with self.connection.cursor() as cur:
             cur.execute(query, (name, price, quantity))
@@ -41,3 +42,5 @@ class Stocks:
             # Return error message this can be handled in the API later.
             # pass
         # query = "" 
+    def print_stock(self):
+        pass
