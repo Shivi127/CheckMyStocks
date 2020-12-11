@@ -35,12 +35,29 @@ class Stocks:
         with self.connection.cursor() as cur:
             cur.execute(query, (name, price, quantity))
 
-    def remove_stock(self, name, quantity=0):
-        # To be implemented once I have a front end and more logic.
-        pass
-        # if not stock_name(name):
-            # Return error message this can be handled in the API later.
-            # pass
-        # query = "" 
-    def print_stock(self):
-        pass
+    def remove_stock(self, stock_name, quantity=0):
+        # TODO: 1) Reduce Quantity 2) Delete FROM DB or give arropriate error
+        print(f"Removing {stock_name} from DB")
+        # query = "SELECT quantity FROM stocks_db WHERE stock_name=%s;"
+        # with self.connection.cursor() as cur:
+        #     cur.execute(query, [stock_name])
+        #     row = cur.fetchone()
+        #     return row[0]
+
+    def get_all_stocks(self):
+        # TODO: Add checks for miising
+        print("Getting Stock Names from DB")
+        query = " SELECT DISTINCT stock_name FROM stocks_db;"
+        with self.connection.cursor() as cur:
+            cur.execute(query)
+            rows = cur.fetchall()
+            return [ele[0] for ele in rows]
+    
+    def get_count_of_stock(self, stock_name):
+        # TODO: Add checks for miising
+        print(f"Getting Stock Count for {stock_name} from DB")
+        query = "SELECT quantity FROM stocks_db WHERE stock_name=%s;"
+        with self.connection.cursor() as cur:
+            cur.execute(query, [stock_name])
+            row = cur.fetchone()
+            return row[0]

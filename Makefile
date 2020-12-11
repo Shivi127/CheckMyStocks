@@ -9,7 +9,7 @@ build :
 	docker build -f $(CURR_PATH)/Dockerfile -t $(IMAGE_NAME) .
 
 run : build
-	docker run --rm $(IMAGE_NAME) /Stocks/startserver.sh
+	docker run -p 127.0.0.1:8080:8000 --rm $(IMAGE_NAME) /Stocks/startserver.sh
 
 hop-in: 
 	docker run -v $(MAKEFILE_PATH):/stocks/ -it $(IMAGE_NAME) /bin/bash
